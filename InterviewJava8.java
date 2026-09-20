@@ -1,33 +1,52 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 
 
 public class InterviewJava8 {
     public static void main(String arg[]){
+
+        Service service = new Service();
+
+        System.out.println("Second Highest Salary: "+service.secondHigestSalary());
+
         System.out.println("Hello");
+
+        // Interface created NewInterf using lambda expression implement
+
+        NewInterf aded = (a, b) -> a + b;
+
+        System.out.println(aded.add(10,20));
 
         // fins Second Higest salary using java 8
 
-        List<Integer> list1 = List.of(1,2,3,4,5,6,8,454,3,4,5);
 
-        Integer list2 = list1.stream()
-                .distinct()
-                .sorted(Comparator.reverseOrder())
-                .skip(1)
-                .findFirst()
-                .orElseThrow();
-
-        System.out.println("find second higest satay is: "+ list2);
 
         //input WELCOME output WE@LC@OM@E
 
         String str = "WELCOME";
 
+        String outpu = IntStream.range(0, str.length())
+                .mapToObj( i ->{
+                     if(i == 2 || i == 6 || i ==4){
+                         return  "@" + str.charAt(i);
+                     }
 
-        NewInterf aded = (a, b) -> a + b;
+                     return  String.valueOf(str.charAt(i));
+                })
+                .collect(Collectors.joining());
 
-        System.out.println(aded.add(10,20));
+        System.out.println(outpu);
+
+        //  find non repeting charector first using java 8
+
+        String str1 = "avdhut";
+
+       // Map<String, Integer> map = str1.toCharArray()
+
+
+
 
 
     }
